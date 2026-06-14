@@ -115,9 +115,75 @@
         padding: 68px 48px 48px;
         overflow: hidden;
         border: 1px solid var(--hb-line);
-        border-top-color: rgba(200, 144, 82, 0.65);
         border-radius: 2px;
         background: linear-gradient(155deg, rgba(21, 23, 25, 0.98), rgba(17, 19, 22, 0.98));
+    }
+
+    .hidebar-feature--art {
+        background: var(--hb-surface);
+    }
+
+    .hidebar-feature--art::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 0;
+        height: min(620px, 52vw);
+        min-height: 430px;
+        pointer-events: none;
+        background:
+            linear-gradient(90deg, rgba(17, 19, 22, 0.22) 0%, rgba(17, 19, 22, 0.5) 66%, rgba(17, 19, 22, 0.74) 100%),
+            linear-gradient(180deg, rgba(17, 19, 22, 0.08) 0%, rgba(17, 19, 22, 0.12) 48%, var(--hb-surface) 100%),
+            linear-gradient(
+                180deg,
+                rgba(5, 6, 7, 0.7) 0%,
+                rgba(5, 6, 7, 0.7) 38%,
+                rgba(5, 6, 7, 0.34) 62%,
+                transparent 82%
+            ),
+            var(--hb-art-image) var(--hb-art-position, center) / cover no-repeat;
+    }
+
+    .hidebar-text-backdrop {
+        position: absolute !important;
+        top: -72px;
+        left: -160px;
+        z-index: 1 !important;
+        width: min(1240px, 132%);
+        height: 560px;
+        pointer-events: none;
+        background: radial-gradient(
+            ellipse 76% 72% at 31% 46%,
+            rgba(5, 6, 7, 0.9) 0%,
+            rgba(5, 6, 7, 0.8) 28%,
+            rgba(5, 6, 7, 0.57) 52%,
+            rgba(5, 6, 7, 0.28) 72%,
+            rgba(5, 6, 7, 0.08) 88%,
+            transparent 100%
+        );
+        filter: blur(28px);
+    }
+
+    .hidebar-feature--visibility {
+        --hb-art-image: url("assets/invisible-man-close-up.jpg");
+        --hb-art-position: center top;
+    }
+
+    .hidebar-feature--panels {
+        --hb-art-image: url("assets/invisible-man-mirror-laboratory.jpg");
+        --hb-art-position: center top;
+    }
+
+    .hidebar-feature--unified {
+        --hb-art-image: url("assets/biohacking-laboratory-tools.jpg");
+        --hb-art-position: center top;
+    }
+
+    .hidebar-feature--portable {
+        --hb-art-image: url("assets/invisible-man-laboratory-still-life.jpg");
+        --hb-art-position: center top;
     }
 
     .hidebar-feature > *,
@@ -131,6 +197,8 @@
     .hidebar-companion::before,
     .hidebar-support::before {
         content: attr(data-index);
+        position: relative;
+        z-index: 1;
         display: block;
         margin-bottom: 44px;
         color: var(--hb-amber);
@@ -139,6 +207,14 @@
         line-height: 1;
         letter-spacing: 0.2em;
         text-transform: uppercase;
+    }
+
+    .hidebar-feature--art > :not(.hidebar-text-backdrop) {
+        z-index: 3;
+    }
+
+    .hidebar-feature.hidebar-feature--art::before {
+        z-index: 3;
     }
 
     .hidebar-feature h3,
@@ -158,6 +234,11 @@
         opacity: 1;
         transition: opacity 140ms ease-out;
         will-change: opacity;
+    }
+
+    .hidebar-title-word {
+        display: inline-block;
+        white-space: nowrap;
     }
 
     .hidebar-feature > p,
@@ -309,18 +390,25 @@
     }
 
     .hidebar-final-cta {
-        padding: 100px 0 40px;
-        border-top: 1px solid var(--hb-line);
+        min-height: 520px;
+        padding: 100px 48px 64px;
+        overflow: hidden;
+        border: 1px solid var(--hb-line);
+        background:
+            linear-gradient(90deg, rgba(5, 6, 7, 0.38) 0%, rgba(5, 6, 7, 0.66) 50%, rgba(5, 6, 7, 0.92) 100%),
+            linear-gradient(180deg, rgba(5, 6, 7, 0.08), rgba(5, 6, 7, 0.72)),
+            url("assets/invisible-man-mirror-portrait.jpg") center / cover no-repeat;
     }
 
     .hidebar-final-cta h2 {
         max-width: 940px;
         margin: 0;
         color: var(--hb-ivory);
-        font-size: clamp(3.1rem, 8vw, 6rem);
+        font-size: clamp(2.9rem, 7vw, 5.35rem);
         font-weight: 800;
-        line-height: 0.92;
-        letter-spacing: -0.045em;
+        line-height: 0.98;
+        letter-spacing: -0.03em;
+        word-spacing: 0.12em;
         text-transform: uppercase;
     }
 
@@ -349,6 +437,38 @@
         .hidebar-support {
             margin-bottom: 24px;
             padding: 44px 24px 24px;
+        }
+
+        .hidebar-feature--art::after {
+            height: 360px;
+            min-height: 0;
+            background:
+                linear-gradient(90deg, rgba(17, 19, 22, 0.2), rgba(17, 19, 22, 0.58)),
+                linear-gradient(180deg, rgba(17, 19, 22, 0.08) 0%, rgba(17, 19, 22, 0.16) 44%, var(--hb-surface) 100%),
+                linear-gradient(
+                    180deg,
+                    rgba(5, 6, 7, 0.7) 0%,
+                    rgba(5, 6, 7, 0.7) 42%,
+                    rgba(5, 6, 7, 0.3) 68%,
+                    transparent 88%
+                ),
+                var(--hb-art-image) var(--hb-art-position, center) / cover no-repeat;
+        }
+
+        .hidebar-text-backdrop {
+            top: -48px;
+            left: -86px;
+            width: calc(100% + 172px);
+            height: 440px;
+            background: radial-gradient(
+                ellipse 80% 74% at 42% 44%,
+                rgba(5, 6, 7, 0.9) 0%,
+                rgba(5, 6, 7, 0.78) 34%,
+                rgba(5, 6, 7, 0.5) 60%,
+                rgba(5, 6, 7, 0.18) 82%,
+                transparent 100%
+            );
+            filter: blur(22px);
         }
 
         .hidebar-feature::before,
@@ -386,11 +506,16 @@
         }
 
         .hidebar-final-cta {
-            padding: 72px 12px 16px;
+            min-height: 420px;
+            padding: 72px 24px 32px;
+            background-position: center, center, 38% center;
         }
 
         .hidebar-final-cta h2 {
-            font-size: clamp(2.65rem, 12vw, 4rem);
+            font-size: clamp(2.3rem, 10.5vw, 3.5rem);
+            line-height: 1;
+            letter-spacing: -0.025em;
+            word-spacing: 0.1em;
         }
     }
 
@@ -410,7 +535,8 @@
         </section>
 
         <!-- Fast Visibility Control -->
-        <section class="hidebar-feature" id="fast-visibility-control" data-index="01 / Visibility">
+        <section class="hidebar-feature hidebar-feature--art hidebar-feature--visibility" id="fast-visibility-control" data-index="01 / Visibility">
+            <span class="hidebar-text-backdrop" aria-hidden="true"></span>
             <h3>Fast Visibility Control</h3>
             <p>Keep frequently used visibility controls within reach. Toggle individual Collections, Objects, and Mask modifiers, or isolate a Collection or Object with Solo, all from one focused panel.</p>
 
@@ -428,7 +554,8 @@
         </section>
 
         <!-- Build Your Own Panels -->
-        <section class="hidebar-feature" id="build-your-own-panels" data-index="02 / Panels">
+        <section class="hidebar-feature hidebar-feature--art hidebar-feature--panels" id="build-your-own-panels" data-index="02 / Panels">
+            <span class="hidebar-text-backdrop" aria-hidden="true"></span>
             <h3>Build Your Own Panels</h3>
             <p>Create focused Panels for a character, environment, lighting rig, product variation, or any other part of your workflow. Add only the controls you actually need and give them clear, readable names.</p>
 
@@ -439,7 +566,8 @@
         </section>
 
         <!-- Everything in One Place -->
-        <section class="hidebar-feature" id="everything-in-one-place" data-index="03 / Unified Control">
+        <section class="hidebar-feature hidebar-feature--art hidebar-feature--unified" id="everything-in-one-place" data-index="03 / Unified Control">
+            <span class="hidebar-text-backdrop" aria-hidden="true"></span>
             <h3>Everything in One Place</h3>
             <p>Bring the visibility controls you use most into one compact place. Hidebar lets Collections, Objects, and Mask modifiers live side by side in the same Panel, so you can control the important parts of your scene without jumping between different areas of Blender.</p>
 
@@ -450,7 +578,8 @@
         </section>
 
         <!-- Export and Reuse -->
-        <section class="hidebar-feature" id="export-and-reuse" data-index="04 / Portable Setup">
+        <section class="hidebar-feature hidebar-feature--art hidebar-feature--portable" id="export-and-reuse" data-index="04 / Portable Setup">
+            <span class="hidebar-text-backdrop" aria-hidden="true"></span>
             <h3>Export and Reuse</h3>
             <p>Export any Panel as a JSON file and import it into another .blend file. Reuse visibility setups across similar scenes, asset variations, production files, or recurring project structures.</p>
 
@@ -466,7 +595,7 @@
             <p>Pair Hidebar with Hyper Shot to take control beyond visibility. Organize the scene elements you need with Hidebar, then save states, manage variations, and batch render them with Hyper Shot.</p>
 
             <a class="hidebar-companion-cover" href="https://superhivemarket.com/products/hyper-shot-state-manager--batch-render-addon" target="_blank" rel="noopener noreferrer" aria-label="View Hyper Shot on Superhive">
-                <img src="assets/Hyper%20Shot%20Cover.jpg" alt="Hyper Shot Blender add-on cover" loading="lazy">
+                <img src="assets/hyper-shot-cover.jpg" alt="Hyper Shot Blender add-on cover" loading="lazy">
             </a>
 
             <a class="hidebar-companion-link" href="https://superhivemarket.com/products/hyper-shot-state-manager--batch-render-addon" target="_blank" rel="noopener noreferrer">Discover Hyper Shot</a>
@@ -516,17 +645,28 @@
         textNodes.forEach(function (textNode) {
             var fragment = document.createDocumentFragment();
 
-            Array.from(textNode.nodeValue).forEach(function (character) {
-                if (/\s/.test(character)) {
-                    fragment.appendChild(document.createTextNode(character));
+            textNode.nodeValue.split(/(\s+)/).forEach(function (part) {
+                if (!part) {
                     return;
                 }
 
-                var letter = document.createElement("span");
-                letter.className = "hidebar-title-letter";
-                letter.setAttribute("aria-hidden", "true");
-                letter.textContent = character;
-                fragment.appendChild(letter);
+                if (/^\s+$/.test(part)) {
+                    fragment.appendChild(document.createTextNode(part));
+                    return;
+                }
+
+                var word = document.createElement("span");
+                word.className = "hidebar-title-word";
+                word.setAttribute("aria-hidden", "true");
+
+                Array.from(part).forEach(function (character) {
+                    var letter = document.createElement("span");
+                    letter.className = "hidebar-title-letter";
+                    letter.textContent = character;
+                    word.appendChild(letter);
+                });
+
+                fragment.appendChild(word);
             });
 
             textNode.parentNode.replaceChild(fragment, textNode);
