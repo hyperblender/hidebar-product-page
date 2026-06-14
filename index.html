@@ -78,11 +78,103 @@
     }
 
     .hidebar-intro,
+    .hidebar-sale,
     .hidebar-feature,
     .hidebar-companion,
     .hidebar-support,
     .hidebar-final-cta {
         width: 100%;
+    }
+
+    .hidebar-sale {
+        position: relative;
+        min-height: 230px;
+        margin: 0 0 52px;
+        padding: 52px 42px;
+        overflow: hidden;
+        border: 1px solid var(--hb-line-strong);
+        border-radius: 2px;
+        background: var(--hb-black);
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+        transform-style: preserve-3d;
+        transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+        will-change: transform;
+    }
+
+    .hidebar-sale::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+            linear-gradient(90deg, rgba(5, 6, 7, 0.86) 0%, rgba(5, 6, 7, 0.56) 52%, rgba(5, 6, 7, 0.24) 100%),
+            linear-gradient(180deg, rgba(5, 6, 7, 0.08), rgba(5, 6, 7, 0.52)),
+            url("assets/biohacking-laboratory-tools.jpg") center bottom / cover no-repeat;
+        transform: scale(1.025);
+    }
+
+    .hidebar-sale:hover {
+        border-color: rgba(200, 144, 82, 0.48);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+    }
+
+    .hidebar-sale-inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        min-height: 124px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 36px;
+        transform: translateZ(18px);
+    }
+
+    .hidebar-sale-copy {
+        min-width: 0;
+    }
+
+    .hidebar-sale-kicker {
+        margin: 0 0 16px;
+        color: var(--hb-amber);
+        font-size: 0.66rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+    }
+
+    .hidebar-sale-title {
+        margin: 0;
+        color: var(--hb-ivory);
+        font-size: clamp(2.4rem, 6vw, 4.35rem);
+        font-weight: 800;
+        line-height: 0.94;
+        letter-spacing: -0.045em;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .hidebar-sale-note {
+        margin: 18px 0 0;
+        color: var(--hb-muted);
+        font-size: 0.76rem;
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .hidebar-sale-discount {
+        flex: 0 0 auto;
+        color: #d89b52;
+        font-size: clamp(4.6rem, 12vw, 8.2rem);
+        font-weight: 800;
+        line-height: 0.78;
+        letter-spacing: -0.075em;
+        white-space: nowrap;
+        transform: translateZ(34px);
     }
 
     .hidebar-intro {
@@ -427,6 +519,42 @@
             padding: 14px 24px 0;
         }
 
+        .hidebar-sale {
+            min-height: 0;
+            margin-bottom: 36px;
+            padding: 34px 24px;
+        }
+
+        .hidebar-sale::before {
+            background:
+                linear-gradient(90deg, rgba(5, 6, 7, 0.84), rgba(5, 6, 7, 0.4)),
+                linear-gradient(180deg, rgba(5, 6, 7, 0.08), rgba(5, 6, 7, 0.6)),
+                url("assets/biohacking-laboratory-tools.jpg") center bottom / cover no-repeat;
+        }
+
+        .hidebar-sale-inner {
+            display: block;
+            min-height: 0;
+        }
+
+        .hidebar-sale-kicker {
+            margin-bottom: 12px;
+        }
+
+        .hidebar-sale-title {
+            font-size: clamp(2rem, 10vw, 3.15rem);
+        }
+
+        .hidebar-sale-note {
+            display: none;
+        }
+
+        .hidebar-sale-discount {
+            margin-top: 22px;
+            font-size: clamp(3.4rem, 17vw, 5.4rem);
+            text-align: right;
+        }
+
         .hidebar-intro p {
             font-size: clamp(1.18rem, 5vw, 1.45rem);
             line-height: 1.5;
@@ -520,6 +648,11 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+        .hidebar-sale {
+            transform: none !important;
+            transition: none !important;
+        }
+
         .hidebar-title-letter {
             opacity: 1 !important;
             transition: none !important;
@@ -529,6 +662,18 @@
 
 <main class="hidebar-page">
     <div class="hidebar-container">
+        <!-- Launch Sale -->
+        <aside class="hidebar-sale" id="hidebar-launch-sale" aria-label="Hidebar launch sale, 50 percent off">
+            <div class="hidebar-sale-inner">
+                <div class="hidebar-sale-copy">
+                    <p class="hidebar-sale-kicker">Limited Launch Offer</p>
+                    <h2 class="hidebar-sale-title">Launch Sale</h2>
+                    <p class="hidebar-sale-note">Available for a limited time</p>
+                </div>
+                <div class="hidebar-sale-discount" aria-hidden="true">&minus;50%</div>
+            </div>
+        </aside>
+
         <!-- Introduction -->
         <section class="hidebar-intro" aria-label="Introduction">
             <p><strong>Hidebar</strong> is an intelligent visibility control center for Blender. It gives you fast, convenient visibility control without digging through the Outliner. Build your own compact toggle panel for the collections, objects, and Mask modifiers you use most, and hide or reveal scene elements directly from the 3D View sidebar.</p>
@@ -616,6 +761,47 @@
 </main>
 
 <script>
+(function () {
+    var banner = document.getElementById("hidebar-launch-sale");
+
+    if (!banner || !window.matchMedia ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+        !window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        return;
+    }
+
+    var animationFrame = 0;
+    var rotateX = 0;
+    var rotateY = 0;
+
+    function renderTilt() {
+        animationFrame = 0;
+        banner.style.transform = "perspective(1000px) rotateX(" + rotateX.toFixed(2) + "deg) rotateY(" + rotateY.toFixed(2) + "deg)";
+    }
+
+    banner.addEventListener("pointermove", function (event) {
+        var rect = banner.getBoundingClientRect();
+        var x = (event.clientX - rect.left) / rect.width;
+        var y = (event.clientY - rect.top) / rect.height;
+
+        rotateY = (x - 0.5) * 4;
+        rotateX = (y - 0.5) * -4;
+
+        if (!animationFrame) {
+            animationFrame = window.requestAnimationFrame(renderTilt);
+        }
+    }, { passive: true });
+
+    banner.addEventListener("pointerleave", function () {
+        rotateX = 0;
+        rotateY = 0;
+
+        if (!animationFrame) {
+            animationFrame = window.requestAnimationFrame(renderTilt);
+        }
+    });
+}());
+
 (function () {
     var page = document.querySelector(".hidebar-page");
     if (!page) {
