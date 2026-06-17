@@ -378,6 +378,43 @@
         margin-bottom: 0;
     }
 
+    .hidebar-demo-frame {
+        position: relative;
+        display: block;
+        width: 100%;
+        margin: 52px 0;
+        overflow: hidden;
+        border: 1px solid var(--hb-line);
+        border-radius: 1px;
+        background: var(--hb-black);
+        box-shadow: 0 26px 80px rgba(0, 0, 0, 0.32);
+    }
+
+    .hidebar-demo-frame--portrait {
+        width: min(560px, 100%);
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .hidebar-demo-frame--transparent {
+        border-color: transparent;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .hidebar-demo-frame img,
+    .hidebar-demo-frame video {
+        width: 100%;
+        aspect-ratio: 1080 / 1500;
+        object-fit: contain;
+        background: var(--hb-black);
+    }
+
+    .hidebar-demo-frame--transparent img {
+        background: transparent;
+        filter: drop-shadow(0 24px 42px rgba(0, 0, 0, 0.38));
+    }
+
     .hidebar-media-caption {
         display: block;
         color: var(--hb-muted);
@@ -620,6 +657,10 @@
             background-size: 32px 32px;
         }
 
+        .hidebar-demo-frame {
+            margin: 38px 0;
+        }
+
         .hidebar-companion {
             margin-top: 72px;
         }
@@ -685,10 +726,9 @@
             <h3>Fast Visibility Control</h3>
             <p>Bring your most-used scene elements closer. Hide, reveal, or solo Collections, Objects, and Mask modifiers from one focused Panel.</p>
 
-            <div class="hidebar-media-placeholder" role="img" aria-label="Placeholder for the character example video">
-                Video 1
-                <span class="hidebar-media-caption">Character example</span>
-            </div>
+            <figure class="hidebar-demo-frame hidebar-demo-frame--portrait hidebar-demo-frame--transparent" aria-label="Character example animation">
+                <img src="assets/demo/1.webp" alt="Character example showing Hidebar visibility controls in Blender" loading="eager" decoding="async">
+            </figure>
 
             <p class="hidebar-feature-copy">Behind each Panel is a snapshot-based system that remembers previous states, respects nested Collections, restores mixed visibility flags, and safely handles missing data. This helps you work around Blender’s visibility limitations and keeps complex scenes predictable.</p>
 
