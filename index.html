@@ -230,11 +230,6 @@
         --hb-art-position: center top;
     }
 
-    .hidebar-feature--portable {
-        --hb-art-image: url("assets/invisible-man-laboratory-still-life.jpg");
-        --hb-art-position: center top;
-    }
-
     .hidebar-feature > *,
     .hidebar-companion > *,
     .hidebar-support > * {
@@ -272,7 +267,7 @@
         max-width: 820px;
         margin: 0 0 32px;
         color: var(--hb-ivory);
-        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-size: clamp(2.35rem, 5.4vw, 4.05rem);
         font-weight: 800;
         line-height: 0.94;
         letter-spacing: -0.04em;
@@ -392,7 +387,7 @@
     }
 
     .hidebar-companion {
-        margin-top: 104px;
+        margin-top: 0;
         background:
             radial-gradient(circle at 100% 0%, rgba(200, 144, 82, 0.13), transparent 34%),
             linear-gradient(155deg, rgba(21, 23, 25, 0.98), rgba(17, 19, 22, 0.98));
@@ -577,7 +572,7 @@
         .hidebar-companion h3,
         .hidebar-support h3 {
             margin-bottom: 24px;
-            font-size: clamp(2.15rem, 10.5vw, 3.3rem);
+            font-size: clamp(2rem, 9.6vw, 3rem);
             line-height: 0.96;
             letter-spacing: -0.035em;
         }
@@ -593,7 +588,7 @@
         }
 
         .hidebar-companion {
-            margin-top: 72px;
+            margin-top: 0;
         }
 
         .hidebar-companion-cover {
@@ -655,8 +650,8 @@
         <!-- Fast Visibility Control -->
         <section class="hidebar-feature hidebar-feature--art hidebar-feature--visibility" id="fast-visibility-control" data-index="01 / Visibility">
             <span class="hidebar-text-backdrop" aria-hidden="true"></span>
-            <h3>Fast Visibility Control</h3>
-            <p>Bring your most-used scene elements closer. Hide, reveal, or solo Collections, Objects, and Mask modifiers from one focused Panel.</p>
+            <h3>Fast Toggles and Solo</h3>
+            <p>Use one Panel to switch visibility while you work. Toggle character parts, isolate elements with Solo, and return to the full setup without opening the Outliner.</p>
 
             <figure class="hidebar-demo-frame hidebar-demo-frame--portrait hidebar-demo-frame--transparent" aria-label="Character example animation">
                 <img src="assets/demo/1.webp" alt="Character example showing Hidebar visibility controls in Blender" loading="eager" decoding="async">
@@ -673,22 +668,11 @@
         <section class="hidebar-feature hidebar-feature--art hidebar-feature--panels" id="build-your-own-panels" data-index="02 / Panels">
             <span class="hidebar-text-backdrop" aria-hidden="true"></span>
             <h3>Build Your Own Panels</h3>
-            <p>Build your own  Panels for a character, environment, lighting, product variation, or any other part of your workflow. Add only the controls you actually need and give them clear, readable names.</p>
+            <p>Build your own Panels for a character, environment, lighting, product variation, or any other part of your workflow. Add only the controls you actually need, give them clear names, and export a Panel as a lightweight JSON file when you want to reuse it in another .blend file.</p>
 
             <div class="hidebar-media-placeholder" role="img" aria-label="Placeholder for the panel building video">
                 Video 3
                 <span class="hidebar-media-caption">Building a panel</span>
-            </div>
-        </section>
-
-        <!-- Export and Reuse -->
-        <section class="hidebar-feature hidebar-feature--art hidebar-feature--portable" id="export-and-reuse" data-index="04 / Portable Setup">
-            <span class="hidebar-text-backdrop" aria-hidden="true"></span>
-            <h3>Export and Reuse</h3>
-            <p>Export any Panel as a JSON file and import it into another .blend file.</p>
-            <div class="hidebar-media-placeholder" role="img" aria-label="Placeholder for an Export and Reuse image">
-                Image
-                <span class="hidebar-media-caption">Export and Reuse</span>
             </div>
         </section>
 
