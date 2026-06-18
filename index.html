@@ -342,10 +342,14 @@
         box-shadow: 0 26px 80px rgba(0, 0, 0, 0.32);
     }
 
+    .hidebar-demo-frame:last-child {
+        margin-bottom: 0;
+    }
+
     .hidebar-demo-frame--portrait {
-        width: min(560px, 100%);
-        margin-right: auto;
-        margin-left: auto;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
     }
 
     .hidebar-demo-frame--transparent {
@@ -357,7 +361,6 @@
     .hidebar-demo-frame img,
     .hidebar-demo-frame video {
         width: 100%;
-        aspect-ratio: 1080 / 1500;
         object-fit: contain;
         background: var(--hb-black);
     }
