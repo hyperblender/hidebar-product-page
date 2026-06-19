@@ -161,7 +161,7 @@
     .hidebar-support {
         position: relative;
         margin: 0 0 44px;
-        padding: 68px 48px 48px;
+        padding: 48px;
         overflow: hidden;
         border: 1px solid var(--hb-line);
         border-radius: 2px;
@@ -237,27 +237,7 @@
         z-index: 1;
     }
 
-    .hidebar-feature::before,
-    .hidebar-companion::before,
-    .hidebar-support::before {
-        content: attr(data-index);
-        position: relative;
-        z-index: 1;
-        display: block;
-        margin-bottom: 44px;
-        color: var(--hb-amber);
-        font-size: 0.68rem;
-        font-weight: 800;
-        line-height: 1;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-    }
-
     .hidebar-feature--art > :not(.hidebar-text-backdrop) {
-        z-index: 3;
-    }
-
-    .hidebar-feature.hidebar-feature--art::before {
         z-index: 3;
     }
 
@@ -393,6 +373,73 @@
         letter-spacing: 0.005em;
     }
 
+    .hidebar-panel-builder-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.82fr);
+        align-items: center;
+        gap: 44px;
+    }
+
+    .hidebar-panel-builder-copy {
+        min-width: 0;
+    }
+
+    .hidebar-panel-builder-copy p {
+        max-width: 520px;
+        margin: 0;
+        color: var(--hb-muted);
+        font-size: 1.06rem;
+        font-weight: 400;
+        line-height: 1.75;
+        letter-spacing: 0.005em;
+    }
+
+    .hidebar-native-flags {
+        min-width: 0;
+        max-width: 520px;
+        margin-top: 32px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(242, 230, 208, 0.13);
+    }
+
+    .hidebar-native-flags p {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        font-size: 0.94rem;
+        line-height: 1.62;
+    }
+
+    .hidebar-native-flags p + p {
+        margin-top: 14px;
+    }
+
+    .hidebar-native-flags strong {
+        color: var(--hb-amber);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        margin-right: 4px;
+        text-transform: uppercase;
+    }
+
+    .hidebar-native-flags code {
+        display: inline-block;
+        padding: 0.1em 0.42em;
+        border: 1px solid rgba(242, 230, 208, 0.14);
+        border-radius: 999px;
+        color: var(--hb-ivory);
+        background: rgba(242, 230, 208, 0.06);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 0.88em;
+        font-weight: 650;
+        line-height: 1.45;
+    }
+
+    .hidebar-panel-builder-media {
+        margin: 0;
+    }
+
     .hidebar-companion {
         margin-top: 0;
         background:
@@ -442,10 +489,6 @@
         margin-bottom: 100px;
         border: 0;
         background: var(--hb-ivory);
-    }
-
-    .hidebar-support::before {
-        color: var(--hb-amber);
     }
 
     .hidebar-support h3 {
@@ -534,7 +577,7 @@
         .hidebar-companion,
         .hidebar-support {
             margin-bottom: 24px;
-            padding: 44px 24px 24px;
+            padding: 24px;
         }
 
         .hidebar-feature--art::after {
@@ -569,12 +612,6 @@
             filter: blur(22px);
         }
 
-        .hidebar-feature::before,
-        .hidebar-companion::before,
-        .hidebar-support::before {
-            margin-bottom: 32px;
-        }
-
         .hidebar-feature h3,
         .hidebar-companion h3,
         .hidebar-support h3 {
@@ -592,6 +629,18 @@
 
         .hidebar-demo-frame {
             margin: 38px 0;
+        }
+
+        .hidebar-panel-builder-layout {
+            display: block;
+        }
+
+        .hidebar-panel-builder-copy p {
+            max-width: none;
+        }
+
+        .hidebar-panel-builder-media {
+            margin: 38px 0 0;
         }
 
         .hidebar-companion {
@@ -655,7 +704,7 @@
         </section>
 
         <!-- Fast Visibility Control -->
-        <section class="hidebar-feature hidebar-feature--art hidebar-feature--visibility" id="fast-visibility-control" data-index="01 / Visibility">
+        <section class="hidebar-feature hidebar-feature--art hidebar-feature--visibility" id="fast-visibility-control">
             <span class="hidebar-text-backdrop" aria-hidden="true"></span>
             <h3>Fast Toggles and Solo</h3>
             <p>Use one Panel to switch visibility while you work. Toggle character parts, isolate elements with Solo, and return to the full setup without opening the Outliner.</p>
@@ -672,19 +721,27 @@
         </section>
 
         <!-- Build Your Own Panels -->
-        <section class="hidebar-feature hidebar-feature--art hidebar-feature--panels" id="build-your-own-panels" data-index="02 / Panels">
+        <section class="hidebar-feature hidebar-feature--art hidebar-feature--panels" id="build-your-own-panels">
             <span class="hidebar-text-backdrop" aria-hidden="true"></span>
-            <h3>Build Your Own Panels</h3>
-            <p>Build your own Panels for a character, environment, product, or any other part of your workflow. Add only the controls you actually need, give them clear names, and export a Panel as a JSON file when you want to reuse it in another .blend file.</p>
+            <div class="hidebar-panel-builder-layout">
+                <div class="hidebar-panel-builder-copy">
+                    <h3>Build Your Own Panels</h3>
+                    <p>Build your own Panels for a character, environment, product, or any other part of your workflow. Add only the controls you actually need, give them clear names, and export a Panel as a JSON file when you want to reuse it in another .blend file.</p>
+                    <div class="hidebar-native-flags" aria-label="Native Blender visibility flags used by Hidebar">
+                        <p><strong>For Collections,</strong> Hidebar uses <code>Exclude from View Layer</code>.</p>
+                        <p><strong>For Objects,</strong> Hidebar uses <code>Disable in Viewports</code> and <code>Disable in Renders</code>.</p>
+                        <p><strong>For Masks,</strong> Hidebar uses the Mask modifier switches <code>Show in Viewport</code> and <code>Show in Render</code>.</p>
+                    </div>
+                </div>
 
-            <div class="hidebar-media-placeholder" role="img" aria-label="Placeholder for the panel building video">
-                Video 3
-                <span class="hidebar-media-caption">Building a panel</span>
+                <figure class="hidebar-demo-frame hidebar-demo-frame--portrait hidebar-demo-frame--framed hidebar-panel-builder-media" aria-label="Building a panel example">
+                    <img src="assets/demo/3.jpg" alt="Building a custom Hidebar panel in Blender" loading="lazy" decoding="async">
+                </figure>
             </div>
         </section>
 
         <!-- Hyper Shot Companion Add-on -->
-        <aside class="hidebar-feature hidebar-companion" id="hyper-shot" data-index="Perfect Match / Hyper Shot">
+        <aside class="hidebar-feature hidebar-companion" id="hyper-shot">
             <h3>A Perfect Match</h3>
             <p>Hyper Shot lets you save full scene setups, switch between them in one click, and batch render variations without repetitive manual setup.</p>
 
@@ -696,7 +753,7 @@
         </aside>
 
         <!-- Support and Feedback -->
-        <section class="hidebar-support" id="support-and-feedback" data-index="05 / Direct Support">
+        <section class="hidebar-support" id="support-and-feedback">
             <h3>Support and Feedback</h3>
             <p>Your feedback helps shape Hidebar. If you encounter an issue, have a workflow question, or want to suggest a feature, feel free to get in touch. Every message is reviewed personally.</p>
             <a class="hidebar-contact-button" href="mailto:UNPRFCT.OFFICIAL@GMAIL.COM">Get in Touch</a>
