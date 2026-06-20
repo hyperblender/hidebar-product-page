@@ -483,40 +483,26 @@
         color: var(--hb-amber);
     }
 
-    .hidebar-support {
-        margin-top: 44px;
-        margin-bottom: 100px;
-        border: 0;
-        background: var(--hb-ivory);
-    }
-
-    .hidebar-support h3 {
-        color: var(--hb-black);
-    }
-
-    .hidebar-support > p {
-        color: var(--hb-soft);
-    }
-
     .hidebar-contact-button {
         display: inline-block;
         margin-top: 38px;
         padding: 18px 34px;
-        border: 1px solid var(--hb-black);
+        border: 1px solid rgba(242, 230, 208, 0.22);
         border-radius: 0;
         color: var(--hb-ivory);
-        background: var(--hb-black);
+        background: rgba(242, 230, 208, 0.06);
         font-size: 0.82rem;
         font-weight: 800;
         letter-spacing: 0.12em;
         text-decoration: none;
         text-transform: uppercase;
-        transition: color 0.25s ease, background-color 0.25s ease;
+        transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
     }
 
     .hidebar-contact-button:hover {
-        color: var(--hb-black);
-        background: transparent;
+        border-color: var(--hb-amber);
+        color: var(--hb-amber);
+        background: rgba(201, 139, 68, 0.08);
     }
 
     .hidebar-final-cta {
@@ -648,11 +634,6 @@
 
         .hidebar-companion-cover {
             margin-top: 38px;
-        }
-
-        .hidebar-support {
-            margin-top: 24px;
-            margin-bottom: 72px;
         }
 
         .hidebar-final-cta {
