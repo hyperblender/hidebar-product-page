@@ -218,6 +218,12 @@
     .hidebar-feature--visibility {
         --hb-art-image: url("assets/invisible-man-close-up.jpg");
         --hb-art-position: center top;
+        background: #111316;
+    }
+
+    .hidebar-feature--visibility::after,
+    .hidebar-feature--visibility .hidebar-text-backdrop {
+        display: none;
     }
 
     .hidebar-feature--panels {
@@ -345,12 +351,24 @@
         background: var(--hb-black);
     }
 
-    .hidebar-demo-frame--transparent img {
+    .hidebar-demo-frame--transparent img,
+    .hidebar-demo-frame--transparent video {
         background: transparent;
     }
 
     .hidebar-demo-frame--framed {
         border-color: rgba(242, 230, 208, 0.13);
+    }
+
+    .hidebar-demo-frame--vignette::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        z-index: 2;
+        pointer-events: none;
+        background:
+            linear-gradient(90deg, #111316 0%, rgba(17, 19, 22, 0) 5%, rgba(17, 19, 22, 0) 95%, #111316 100%),
+            linear-gradient(180deg, #111316 0%, rgba(17, 19, 22, 0) 5%, rgba(17, 19, 22, 0) 95%, #111316 100%);
     }
 
     .hidebar-media-caption {
@@ -689,8 +707,8 @@
             <h3>Fast Toggles and Solo</h3>
             <p>Use one Panel to switch visibility while you work. Toggle character parts, isolate elements with Solo, and return to the full setup without opening the Outliner.</p>
 
-            <figure class="hidebar-demo-frame hidebar-demo-frame--portrait hidebar-demo-frame--transparent" aria-label="Character example animation">
-                <img src="assets/demo/1.webp" alt="Character example showing Hidebar visibility controls in Blender" loading="eager" decoding="async">
+            <figure class="hidebar-demo-frame hidebar-demo-frame--portrait hidebar-demo-frame--transparent hidebar-demo-frame--vignette" aria-label="Character example animation">
+                <video src="assets/demo/1.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Character example showing Hidebar visibility controls in Blender"></video>
             </figure>
 
             <p class="hidebar-feature-copy">Behind each Panel is a snapshot-based system that remembers previous states, respects nested Collections, restores mixed visibility flags, and safely handles missing data. This helps you work around Blender’s visibility limitations and keeps complex scenes predictable.</p>
