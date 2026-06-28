@@ -464,13 +464,30 @@
             linear-gradient(155deg, rgba(21, 23, 25, 0.98), rgba(17, 19, 22, 0.98));
     }
 
+    .hidebar-companion-item {
+        display: block;
+        min-width: 0;
+    }
+
+    .hidebar-companion-item + .hidebar-companion-item {
+        margin-top: 52px;
+    }
+
+    .hidebar-companion-item-description {
+        max-width: 690px;
+        margin: 0 0 32px;
+        color: var(--hb-muted);
+        font-size: 1.06rem;
+        font-weight: 400;
+        line-height: 1.75;
+        letter-spacing: 0.005em;
+    }
+
     .hidebar-companion-cover {
         display: block;
-        margin-top: 52px;
         overflow: hidden;
         border: 1px solid var(--hb-line-strong);
         background: var(--hb-black);
-        text-decoration: none;
     }
 
     .hidebar-companion-cover img {
@@ -650,8 +667,12 @@
             margin-top: 0;
         }
 
-        .hidebar-companion-cover {
+        .hidebar-companion-item + .hidebar-companion-item {
             margin-top: 38px;
+        }
+
+        .hidebar-companion-item-description {
+            margin-bottom: 28px;
         }
 
         .hidebar-final-cta {
@@ -738,16 +759,26 @@
             </div>
         </section>
 
-        <!-- Hyper Shot Companion Add-on -->
+        <!-- Companion Add-ons -->
         <aside class="hidebar-feature hidebar-companion" id="hyper-shot">
             <h3>A Perfect Match</h3>
-            <p>Hyper Shot lets you save full scene setups, switch between them in one click, and batch render variations without repetitive manual setup.</p>
+            <div class="hidebar-companion-products" aria-label="Companion add-ons">
+                <div class="hidebar-companion-item">
+                    <p class="hidebar-companion-item-description">Hyper Shot lets you save full scene setups, switch between them in one click, and batch render variations without repetitive manual setup.</p>
+                    <a class="hidebar-companion-cover" href="https://superhivemarket.com/products/hyper-shot-state-manager--batch-render-addon" target="_blank" rel="noopener noreferrer" aria-label="View Hyper Shot on Superhive">
+                        <img src="assets/hyper-shot-cover.jpg" alt="Hyper Shot Blender add-on cover" loading="lazy">
+                    </a>
+                    <a class="hidebar-companion-link" href="https://superhivemarket.com/products/hyper-shot-state-manager--batch-render-addon" target="_blank" rel="noopener noreferrer">Discover Hyper Shot</a>
+                </div>
 
-            <a class="hidebar-companion-cover" href="https://superhivemarket.com/products/hyper-shot-state-manager--batch-render-addon" target="_blank" rel="noopener noreferrer" aria-label="View Hyper Shot on Superhive">
-                <img src="assets/hyper-shot-cover.jpg" alt="Hyper Shot Blender add-on cover" loading="lazy">
-            </a>
-
-            <a class="hidebar-companion-link" href="https://superhivemarket.com/products/hyper-shot-state-manager--batch-render-addon" target="_blank" rel="noopener noreferrer">Discover Hyper Shot</a>
+                <div class="hidebar-companion-item">
+                    <p class="hidebar-companion-item-description">Hyper Bar adds a progress bar and live metrics, so you can see how long your render will take and when it is expected to finish.</p>
+                    <a class="hidebar-companion-cover" href="https://superhivemarket.com/products/hyper-bar" target="_blank" rel="noopener noreferrer" aria-label="View Hyper Bar on Superhive">
+                        <img src="assets/hyper-bar-cover.jpg" alt="Hyper Bar Blender add-on cover" loading="lazy">
+                    </a>
+                    <a class="hidebar-companion-link" href="https://superhivemarket.com/products/hyper-bar" target="_blank" rel="noopener noreferrer">Discover Hyper Bar</a>
+                </div>
+            </div>
         </aside>
 
         <!-- Support and Feedback -->
